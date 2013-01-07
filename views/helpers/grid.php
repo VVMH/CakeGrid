@@ -327,9 +327,9 @@ class GridHelper extends AppHelper {
 			return $View->element($this->elemDir . DS . $column['options']['element'], array('result' => $value));
 		} else {
 			if(isset($column['options']['type']) && $column['options']['type'] == 'date'){
-				$value = date('m/d/Y', strtotime($value));
+				$value = !empty($value) ? date('m/d/Y', strtotime($value)) : '';
 			} else if(isset($column['options']['type']) && $column['options']['type'] == 'datetime'){
-				$value = date('m/d/Y h:ia', strtotime($value));
+				$value = !empty($value) ? date('m/d/Y h:ia', strtotime($value)) : '';
 			} else if(isset($column['options']['type']) && $column['options']['type'] == 'money' && $this->__settings['type'] != 'csv'){
 				$value = money_format('%n', $value);
 			} else if(isset($column['options']['type']) && $column['options']['type'] == 'actions'){
